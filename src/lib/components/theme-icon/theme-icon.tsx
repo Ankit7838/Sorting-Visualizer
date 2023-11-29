@@ -1,17 +1,27 @@
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/host/store/hooks';
 
-import { Theme } from '@/types/interfaces';
-import classes from './mode-icon.module.scss';
+import { Theme } from '@/host/types/interfaces';
+import classes from './theme-icon.module.scss';
 import { createPortal } from 'react-dom';
 import moonIcon from '/icons/moon.svg';
-import { setTheme } from '@/store/app.slice';
+import { setTheme } from '@/host/store/app.slice';
 import sunIcon from '/icons/sun.svg';
 import { useEffect } from 'react';
 
 const SunIcon = <img src={sunIcon} alt="dark mode" />;
 const MoonIcon = <img src={moonIcon} alt="dark mode" />;
 
-function ModeIcon() {
+function ThemeIcon({
+  top,
+  left,
+  bottom,
+  right = 20,
+}: {
+  top?: number;
+  left?: number;
+  bottom?: number;
+  right?: number;
+}) {
   const dispatch = useAppDispatch();
   const storeTheme = useAppSelector((state) => state.app.theme);
   const prefTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -33,6 +43,7 @@ function ModeIcon() {
       {createPortal(
         <button
           className={classes.iconBtn}
+          style={{ top, left, bottom, right }}
           onClick={() =>
             dispatch(
               setTheme(currentTheme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT)
@@ -47,4 +58,4 @@ function ModeIcon() {
   );
 }
 
-export default ModeIcon;
+export default ThemeIcon;

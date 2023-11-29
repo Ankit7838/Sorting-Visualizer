@@ -1,9 +1,7 @@
-@use '/src/styles/theme';
+@use '/src/host/styles/theme';
 
 .iconBtn {
   position: absolute;
-  right: 20px;
-  bottom: 15px;
   padding: 5px;
   cursor: pointer;
   background-color: theme.$light;

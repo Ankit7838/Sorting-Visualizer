@@ -1,4 +1,4 @@
-@use '/src/styles/theme';
+@use '/src/host/styles/theme';
 
 .controllerWrapper {
   padding: 0 20px;
@@ -62,14 +62,6 @@
       flex-basis: 25%;
       gap: 16px;
       margin-top: 20px;
-
-      button:disabled {
-        cursor: not-allowed;
-      }
-
-      button:disabled img {
-        opacity: 0.5;
-      }
 
       input[type='range'] {
         flex: 1;

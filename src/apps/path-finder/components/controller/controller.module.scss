@@ -1,0 +1,68 @@
+@use '/src/host/styles/theme';
+
+.controller {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+
+  .cellControls {
+    display: flex;
+    gap: 10px;
+  }
+
+  button {
+    text-transform: capitalize;
+
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
+
+  .clickTypes {
+    display: flex;
+    gap: 1px;
+
+    .active {
+      color: theme.$light;
+      background-color: theme.$primary;
+
+      &.entry {
+        color: var(--pf-cell-entry);
+      }
+
+      &.exit {
+        color: var(--pf-cell-exit);
+      }
+
+      &.wall {
+        color: var(--pf-cell-wall);
+      }
+    }
+  }
+
+  .execution {
+    display: flex;
+    gap: 10px;
+  }
+
+  .dimension {
+    display: none;
+  }
+}
+
+@media (width >= 960px) {
+  .controller .dimension {
+    display: flex;
+    gap: 10px;
+  }
+}
+
+[data-theme='dark'] {
+  /* stylelint-disable-next-line no-descending-specificity */
+  .execution {
+    img {
+      filter: invert(1);
+    }
+  }
+}
